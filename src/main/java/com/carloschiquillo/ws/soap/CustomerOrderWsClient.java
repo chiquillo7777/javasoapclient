@@ -18,10 +18,26 @@ public class CustomerOrderWsClient {
 		request.setCustomerId(BigInteger.valueOf(1));
 		GetOrdersResponse response = customerOrdersPort.getOrders(request);
 		
+		//will create a Create request
+		CreateOrdersRequest createRequest = new CreateOrdersRequest();
+		createRequest.setCustomerId(BigInteger.valueOf(5));
+		
+		Product product = new Product();
+		product.setId("5");
+		product.setDescription("cows");
+		product.setQuantity(BigInteger.valueOf(5));
+		
+		Order order = new Order();
+		order.getProduct();
+		
+		
+		createRequest.setOrder(order);
+		
+		CreateOrdersResponse createResponse = customerOrdersPort.createOrders(createRequest);
 		
 		
 		List<Order> orders = response.getOrder();
-		System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh" + orders.size());
+		System.out.println("response is: " + createResponse);
 
 	}
 
